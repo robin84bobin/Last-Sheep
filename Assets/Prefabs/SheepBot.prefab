@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8093efd1a4856409b237d91e13b3dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 1
   turnDuration: 0.2
   plane: {fileID: 0}
   movingGap: 2
