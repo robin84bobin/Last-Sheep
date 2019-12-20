@@ -1,33 +1,36 @@
-﻿using DG.Tweening;
-using UnityEngine;
+﻿using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerInputController : MonoBehaviour
 {
     private Camera camera;
     public float speed;
     public float turnDuration = 0.2f;
     public Transform plane;
-    private float movingGap = 0.5f;
+    public float movingGap = 2f;
+    private CharacterController characterController;
 
     private void Awake()
     {
+        characterController = GetComponent<CharacterController>();
         camera = Camera.main;
     }
 
     void Update()
     {
+        var moveVector = Vector3.zero;
         if (Input.GetMouseButton(0))
         {
             Vector3 targetPoint = GetPlaneIntersection(plane, camera);
+            targetPoint.Set(targetPoint.x, transform.position.y, targetPoint.z);
             transform.LookAt(targetPoint);
             var delta = (targetPoint - transform.position);
-            if (delta.magnitude <= movingGap)
+            if (delta.magnitude > movingGap)
             {
-                return;
+                moveVector = delta.normalized * speed;
             }
-            var moveVector = delta.normalized * speed;
-            transform.position += moveVector;
         }
+        characterController.SimpleMove(moveVector);
     }
     
     Vector3 GetPlaneIntersection(Transform plane, Camera camera)

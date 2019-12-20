@@ -12,7 +12,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{F6C1A6C2-C7B2-8EA4-F390-F5D716C7617C}</ProjectGuid>
+    <ProjectGuid>{BD24C424-0175-A9A8-579A-D9BE48DEE8E7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -67,25 +67,25 @@
     <Compile Include="Assets\Scripts\PlayerInputController.cs" />
     <None Include="Assets\Demigiant\DOTween\readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/WORK/TEST/Last Standing Sheep/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/WORK/TEST/Last Standing Sheep/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/WORK/TEST/Last Standing Sheep/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:/WORK/TEST/Last Standing Sheep/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/WORK/TEST/Last Standing Sheep/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/WORK/TEST/Last Standing Sheep/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>D:/WORK/TEST/Last Standing Sheep/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.6f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -264,17 +264,17 @@
     <Reference Include="nunit.framework">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.6f1/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="DOTween">
+      <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>D:/WORK/TEST/Last Standing Sheep/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>D:/WORK/TEST/Last Standing Sheep/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>D:/WORK/TEST/Last Standing Sheep/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>D:/WORK/TEST/Last Standing Sheep/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+      <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.6f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8483703741303338893}
   - component: {fileID: 7459520181699261889}
   - component: {fileID: 6160544414078785148}
-  - component: {fileID: 8876638085526331732}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -78,19 +77,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8876638085526331732
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 871582259163462190}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1074446160481519671
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +88,6 @@ GameObject:
   - component: {fileID: 6388103870912257089}
   - component: {fileID: 4121700884463982396}
   - component: {fileID: 31554187620198854}
-  - component: {fileID: 8114388125200558682}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -170,19 +155,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8114388125200558682
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1074446160481519671}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8166150599836925757
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,6 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8357679164849859133}
+  - component: {fileID: 6283648712144984546}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Untagged
@@ -214,3 +187,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+--- !u!143 &6283648712144984546
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8166150599836925757}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1.4
+  m_Radius: 0.74
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 0, z: 0}
