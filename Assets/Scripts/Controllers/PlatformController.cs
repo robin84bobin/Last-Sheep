@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Controllers
@@ -7,32 +6,44 @@ namespace Controllers
     public class PlatformController : MonoBehaviour
     {
         private Animation _animation;
-        private GameModel _gameModel;
         private PlatformModel _platformModel;
-        
-        public void Init(GameModel gameModel)
-        {
-            _gameModel = gameModel;
-            _gameModel.Fsm.OnStateChanged += OnGameStateChanged;
-        }
+        private GameObject _field;
 
         private void Awake()
         {
             _animation = GetComponent<Animation>();
         }
-
-        private void OnGameStateChanged(GameState state)
+        
+        public void Init(PlatformModel platformModel, GameObject field)
         {
-            switch (state)
-            {
-                case GameState.Up:
-                    _animation.Play("Up");
-                    break;
-                case GameState.Down: _animation.Play("Down");
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(state), state, null);
-            }
+            _platformModel = platformModel;
+            _platformModel.OnUp += MoveUp;
+            _platformModel.OnDown += MoveDown;
+            _platformModel.OnAppear += Appear;
+
+            _field = field;
+        }
+
+        private void Appear()
+        {
+            var bounds = _field.GetComponent<Renderer>().bounds;
+            
+            Vector3 point = Vector3.zero;
+            //todo calc appear point using bounds
+            //...
+            transform.position = point;
+            _animation.Play("Appear");
+        }
+        
+        
+        private void MoveDown()
+        {
+            _animation.Play("Down");
+        }
+
+        private void MoveUp()
+        {
+            _animation.Play("Up");
         }
     }
 }

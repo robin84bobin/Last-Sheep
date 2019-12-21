@@ -10,6 +10,11 @@ public class GameConfig : ScriptableObject
     public int defaultSheepsCount = 12;
     public PlatformConfig Platform;
     public SheepConfig sheep;
+
+    public float GetPlatformHighLightPeriod()
+    {
+        return upStateDuration + downStateDuration - Platform.highlightDuration;
+    }
 }
 
 [Serializable]
@@ -21,7 +26,7 @@ public class SheepConfig
 [Serializable]
 public class PlatformConfig
 {
-    public float highlightTime = 5f;
+    public float highlightDuration = 5f;
     public int defaultMaxSheepCapacity = 12;
     public int decreaseCapacityFactor = 1;
 }

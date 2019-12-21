@@ -1,14 +1,13 @@
-﻿using Controllers;
+﻿using System;
+using System.Collections.Generic;
+using Controllers;
 using Model;
-using Model.FSM;
 
 public enum GameState
 {
     Up,
     Down
 }
-
-
 
 public class GameModel : BaseModel
 {
@@ -17,7 +16,8 @@ public class GameModel : BaseModel
     
     private readonly GameConfig _config;
     
-    public PlatformModel platform { get; private set; }
+    public PlatformModel platform { get; }
+    public List<SheepModel> sheeps { get; private set; }
     
     public GameModel(GameConfig config)
     {
@@ -26,13 +26,63 @@ public class GameModel : BaseModel
         fsm = new FSM<GameState, BaseGameState>();
         fsm.Add(new UpState(GameState.Up, _config.upStateDuration));
         fsm.Add(new DownState(GameState.Down, _config.downStateDuration));
+        fsm.OnStateChanged += OnStateChanged;
         
         platform = new PlatformModel(_config);
+        platform.OnAppear += OnPlatformHighlighted;
+
+        CreateSheeps();
+        
+        fsm.SetState(GameState.Down);
+    }
+
+    private void OnPlatformHighlighted()
+    {
+        SetSheepsState(SheepState.GoToTagret);
+    }
+
+    private void CreateSheeps()
+    {
+        sheeps = new List<SheepModel>(_config.defaultSheepsCount);
+        for (int i = 0; i < _config.defaultSheepsCount; i++)
+        {
+            sheeps.Add(new SheepModel());
+        }
+    }
+
+    private void SetSheepsState(SheepState state)
+    {
+        foreach (var sheep in sheeps)
+        {
+            sheep.State.SetState(state);
+        }
+    }
+
+    private void OnStateChanged(GameState state)
+    {
+        switch (state)
+        {
+            case GameState.Up:
+                platform.Up();
+                break;
+            case GameState.Down:
+                platform.Down();
+                SetSheepsState(SheepState.Walk);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(state), state, null);
+        }
     }
 
     protected override void OnTimeUpdate()
     {
         platform.UpdateTime(Time);
         fsm.CurrentState.UpdateTime(Time);
+    }
+
+    public override void Release()
+    {
+        platform.Release();
+        fsm.Release();
     }
 }

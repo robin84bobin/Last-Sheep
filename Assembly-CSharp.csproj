@@ -64,17 +64,20 @@
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
     <Compile Include="Assets\Scripts\Configs\GameConfig.cs" />
-    <Compile Include="Assets\Scripts\Controllers\BotMoveController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\BaseSheepController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\BotSheepController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\GameController.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlatformController.cs" />
-    <Compile Include="Assets\Scripts\Controllers\PlayerInputController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\PlayerSheepController.cs" />
     <Compile Include="Assets\Scripts\FSM\BaseState.cs" />
     <Compile Include="Assets\Scripts\FSM\FSM.cs" />
-    <Compile Include="Assets\Scripts\Models\Game\BaseModel.cs" />
     <Compile Include="Assets\Scripts\Models\Game\GameModel.cs" />
     <Compile Include="Assets\Scripts\Models\Game\States\BaseGameState.cs" />
     <Compile Include="Assets\Scripts\Models\Game\States\DownState.cs" />
     <Compile Include="Assets\Scripts\Models\Game\States\UpState.cs" />
     <Compile Include="Assets\Scripts\Models\PlatformModel.cs" />
+    <Compile Include="Assets\Scripts\Models\Sheep\BaseModel.cs" />
+    <Compile Include="Assets\Scripts\Models\Sheep\SheepModel.cs" />
     <None Include="Assets\Demigiant\DOTween\readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

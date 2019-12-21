@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerInputController : MonoBehaviour
+public class PlayerSheepController : MonoBehaviour
 {
     private Camera camera;
     public float speed;

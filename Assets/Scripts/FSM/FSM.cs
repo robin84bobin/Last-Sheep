@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Model.FSM;
+using UnityEngine;
 
 namespace Model
 {
@@ -34,6 +35,8 @@ namespace Model
 
         public void SetState(TStateName key, bool restartCurrentState = false)
         {
+            Debug.Log("setState: " + key);
+            
             if (!restartCurrentState && CurrentState != null && CurrentState.Name.Equals(key))
                 return;
             

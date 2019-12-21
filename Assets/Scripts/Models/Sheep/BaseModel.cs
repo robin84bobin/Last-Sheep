@@ -1,5 +1,6 @@
 ﻿public abstract class BaseModel
 {
+    protected float Time { get; private set; }
     public void UpdateTime(float time)
     {
         Time = time;
@@ -8,5 +9,5 @@
 
     protected abstract void OnTimeUpdate();
 
-    public float Time { get; private set; }
+    public abstract void Release();
 }

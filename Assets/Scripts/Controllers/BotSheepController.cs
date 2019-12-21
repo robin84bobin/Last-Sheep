@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using Controllers;
+using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class BotMoveController : MonoBehaviour
+public class BotSheepController : BaseSheepController
 {
     public float speed;
     public float turnDuration = 0.2f;
@@ -14,7 +15,7 @@ public class BotMoveController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
     }
 
-    void Update()
+    protected override void MoveOnUpdate()
     {
         var moveVector = Vector3.zero;
         //TODO some logic...
