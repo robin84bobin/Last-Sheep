@@ -29,14 +29,14 @@ public class GameModel : BaseModel
         fsm.OnStateChanged += OnStateChanged;
         
         platform = new PlatformModel(_config);
-        platform.OnAppear += OnPlatformHighlighted;
+        platform.OnAppear += OnPlatformAppear;
 
         CreateSheeps();
         
         fsm.SetState(GameState.Down);
     }
 
-    private void OnPlatformHighlighted()
+    private void OnPlatformAppear()
     {
         SetSheepsState(SheepState.GoToTagret);
     }
@@ -78,6 +78,11 @@ public class GameModel : BaseModel
     {
         platform.Update();
         fsm.CurrentState.Update();
+        
+        foreach (var sheep in sheeps)
+        {
+            sheep.Update();
+        }
     }
 
     public override void Release()

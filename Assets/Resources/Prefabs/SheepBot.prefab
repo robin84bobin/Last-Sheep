@@ -16,6 +16,19 @@ MonoBehaviour:
   turnDuration: 0.2
   plane: {fileID: 0}
   movingGap: 2
+--- !u!65 &2554398982993780525
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4009573107780812935}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5113595257285738426
 PrefabInstance:
   m_ObjectHideFlags: 0

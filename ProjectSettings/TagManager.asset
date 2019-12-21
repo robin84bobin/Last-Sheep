@@ -7,6 +7,7 @@ TagManager:
   - sven
   - sheep
   - platform
+  - field bounds
   layers:
   - Default
   - TransparentFX

@@ -12,6 +12,7 @@ namespace Controllers
         [SerializeField] private GameConfig _config;
         
         private GameModel _gameModel;
+        private List<BaseSheepController> _sheeps;
 
         private void Start()
         {
@@ -28,8 +29,7 @@ namespace Controllers
         {
             _spawnPoints = new Queue<Vector3>();
             int count = _spawnPointsContainer.childCount;
-            for(int i = 0; i < count; i++)
-            {
+            for(int i = 0; i < count; i++){
                 Transform child = _spawnPointsContainer.GetChild(i);
                 _spawnPoints.Enqueue(child.position);
             }
@@ -39,19 +39,20 @@ namespace Controllers
             hero.GetComponent<PlayerSheepController>().plane = _plane;
             SpawnSheep(hero);
             
-            foreach (var sheepModel in _gameModel.sheeps)
-            {
+            _sheeps = new List<BaseSheepController>(_gameModel.sheeps.Count);
+            foreach (var sheepModel in _gameModel.sheeps){
                 var prefabSheep = Resources.Load<GameObject>("Prefabs/SheepBot");
                 var sheep = Instantiate(prefabSheep);
-                sheep.GetComponent<BotSheepController>().Init(sheepModel);
+                var sheepController = sheep.GetComponent<BotSheepController>();
+                    sheepController.Init(sheepModel);
+                _sheeps.Add(sheepController);
                 SpawnSheep(sheep);
             }
         }
 
         private void SpawnSheep(GameObject sheep)
         {
-            if (_spawnPoints.Count <= 0)
-            {
+            if (_spawnPoints.Count <= 0){
                 Debug.LogError("Not enough spawn points in scene!");
                 return;
             }
@@ -64,6 +65,9 @@ namespace Controllers
         private void Update()
         {
             _gameModel.Update();
+            foreach (var sheep in _sheeps){
+                sheep.Update();
+            }
         }
     }
 }

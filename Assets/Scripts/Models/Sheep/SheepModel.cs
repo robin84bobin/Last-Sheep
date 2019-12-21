@@ -5,7 +5,7 @@ namespace Controllers
 {
     public class SheepModel : BaseModel
     {
-        public bool EnableMoving;
+        public bool EnableMoving = true;
 
         private FSM<SheepState, BaseState<SheepState>> _fsm;
         public IStateMachine<SheepState> State => _fsm;
@@ -20,6 +20,11 @@ namespace Controllers
         public override void Release()
         {
             _fsm.Release();
+        }
+
+        public void Update()
+        {
+            //
         }
     }
 

@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+﻿using Controllers;
+using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerSheepController : MonoBehaviour
+public class PlayerSheepController : BaseSheepController
 {
     private Camera camera;
-    public float speed;
     public float turnDuration = 0.2f;
     public Transform plane;
     public float movingGap = 2f;
@@ -16,7 +16,7 @@ public class PlayerSheepController : MonoBehaviour
         camera = Camera.main;
     }
 
-    void Update()
+    protected override void MoveOnUpdate()
     {
         var moveVector = Vector3.zero;
         if (Input.GetMouseButton(0))
@@ -32,7 +32,7 @@ public class PlayerSheepController : MonoBehaviour
         }
         characterController.SimpleMove(moveVector);
     }
-    
+
     Vector3 GetPlaneIntersection(Transform plane, Camera camera)
     {
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
