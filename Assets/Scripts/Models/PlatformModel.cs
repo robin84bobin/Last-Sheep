@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace Controllers
 {
@@ -27,12 +28,12 @@ namespace Controllers
             OnUp?.Invoke();
         }
 
-        protected override void OnTimeUpdate()
+        public void Update()
         {
-            if (Time >= _timeToHighlight)
+            if (Time.time >= _timeToHighlight)
             {
                 OnAppear?.Invoke();
-                _timeToHighlight = Time + _highlightPeriod;
+                _timeToHighlight = Time.time + _highlightPeriod;
             }
         }
 

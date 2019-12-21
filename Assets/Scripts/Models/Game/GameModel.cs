@@ -74,10 +74,10 @@ public class GameModel : BaseModel
         }
     }
 
-    protected override void OnTimeUpdate()
+    public void Update()
     {
-        platform.UpdateTime(Time);
-        fsm.CurrentState.UpdateTime(Time);
+        platform.Update();
+        fsm.CurrentState.Update();
     }
 
     public override void Release()

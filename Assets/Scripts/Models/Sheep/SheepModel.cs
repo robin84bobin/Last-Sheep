@@ -17,11 +17,6 @@ namespace Controllers
             _fsm.Add(new SheepGoToTagretState());
         }
         
-        protected override void OnTimeUpdate()
-        {
-            //
-        }
-
         public override void Release()
         {
             _fsm.Release();

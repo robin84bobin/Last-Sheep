@@ -18,7 +18,7 @@ namespace Controllers
             _gameModel = new GameModel(_config);
             
             _platformController.Init(_gameModel.platform, _field);
-            _gameModel.UpdateTime(Time.time);
+            _gameModel.Update();
 
             CreateSheeps();
         }
@@ -63,7 +63,7 @@ namespace Controllers
 
         private void Update()
         {
-            _gameModel.UpdateTime(Time.time);
+            _gameModel.Update();
         }
     }
 }

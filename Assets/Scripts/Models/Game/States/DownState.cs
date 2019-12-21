@@ -1,4 +1,6 @@
-﻿public class DownState : BaseGameState
+﻿using UnityEngine;
+
+public class DownState : BaseGameState
 {
     private float _timeEnd;
     private float _duration;
@@ -10,7 +12,7 @@
 
     public override void OnEnterState()
     {
-        _timeEnd = UnityEngine.Time.time + _duration;
+        _timeEnd = Time.time + _duration;
     }
 
     public override void OnExitState()
@@ -18,13 +20,11 @@
         _timeEnd = 0;
     }
 
-    public override void UpdateTime(float time)
+    public override void Update()
     {
-        base.UpdateTime(time);
-        if (Time > _timeEnd)
+        if (Time.time> _timeEnd)
         {
             _owner.SetState(GameState.Up);
         }
     }
-
 }
