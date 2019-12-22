@@ -32,7 +32,7 @@ namespace Controllers
             transform.position = point;
             _animation.Play("Appear");
 
-            GetComponent<Renderer>().material.shader = Shader.Find("Mobile/Outline");
+            //GetComponent<Renderer>().material.shader = Shader.Find("Mobile/Outline");
         }
         
         
@@ -43,7 +43,7 @@ namespace Controllers
 
         private void MoveUp()
         {
-            GetComponent<Renderer>().material.shader = Shader.Find("Standart");
+            //GetComponent<Renderer>().material.shader = Shader.Find("Standart");
             _animation.Play("Up");
         }
     }

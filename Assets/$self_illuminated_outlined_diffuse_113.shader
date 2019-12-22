@@ -3,7 +3,7 @@ Shader "Mobile/Outline"
     Properties
     {
         _MainTex ("Base (RGB)", 2D) = "white" {}
-        _Color ("Color", Color) = (1, 0, 1, 1)
+        _Color ("Color", Color) = (1, 1, 1, 1)
         _OutlineColor ("Outline Color", Color) = (1, 1, 1, 1)
         _Outline ("Outline", Float) = 0.1
     }
@@ -25,6 +25,7 @@ Shader "Mobile/Outline"
  
             uniform half4 _OutlineColor;
             uniform half _Outline;
+            
  
             struct vertexInput
             {
@@ -77,6 +78,7 @@ Shader "Mobile/Outline"
         CGPROGRAM
         #pragma surface surf Lambert noforwardadd
  
+        uniform fixed4 _Color;
         uniform sampler2D _MainTex;
  
         struct Input {
@@ -84,8 +86,8 @@ Shader "Mobile/Outline"
         };
  
         void surf (Input IN, inout SurfaceOutput o) {
-            fixed4 c = tex2D(_MainTex, IN.uv_MainTex);
-            o.Albedo = c.rgb;
+            fixed4 c = tex2D(_MainTex, IN.uv_MainTex) ;
+            o.Albedo = c.rgb * _Color;
             o.Alpha = c.a;
         }
         ENDCG

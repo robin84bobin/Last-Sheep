@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1165384bb1dede64ab1b818397ba7251, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  defaultSheepsCount: 12
+  downStateDuration: 15
+  upStateDuration: 5
+  defaultSheepsCount: 8
   Platform:
-    defaultSheepCapacity: 12
+    highlightDuration: 5
+    defaultMaxSheepCapacity: 12
     decreaseCapacityFactor: 1
-    appearPeriod: 30
-    highlightTime: 5
+  sheep:
+    speed: 1
