@@ -3,18 +3,19 @@ using Model.FSM;
 
 namespace Controllers
 {
-    public class SheepModel : BaseModel
+    public class BotSheepModel : BaseModel
     {
         public bool EnableMoving = true;
 
         private FSM<SheepState, BaseState<SheepState>> _fsm;
         public IStateMachine<SheepState> State => _fsm;
         
-        public SheepModel()
+        public BotSheepModel()
         {
             _fsm = new FSM<SheepState, BaseState<SheepState>>();
             _fsm.Add(new SheepWalkState());
             _fsm.Add(new SheepGoToTagretState());
+            _fsm.Add(new SheepDeathState());
         }
         
         public override void Release()
@@ -31,7 +32,17 @@ namespace Controllers
    public enum SheepState
     {
         Walk,
-        GoToTagret
+        GoToTagret,
+        Death
+    }
+
+    public class SheepDeathState : BaseState<SheepState> {
+        public SheepDeathState() : base(SheepState.Death) { }
+        public override void OnEnterState() {
+        }
+
+        public override void OnExitState() {
+        }
     }
 
     public class SheepGoToTagretState : BaseState<SheepState>{

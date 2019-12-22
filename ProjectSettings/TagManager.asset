@@ -8,6 +8,7 @@ TagManager:
   - sheep
   - platform
   - field bounds
+  - death
   layers:
   - Default
   - TransparentFX

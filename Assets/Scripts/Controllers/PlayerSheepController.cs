@@ -1,4 +1,5 @@
 ﻿using Controllers;
+using DG.Tweening;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -23,7 +24,7 @@ public class PlayerSheepController : BaseSheepController
         {
             Vector3 targetPoint = GetPlaneIntersection(plane, camera);
             targetPoint.Set(targetPoint.x, transform.position.y, targetPoint.z);
-            transform.LookAt(targetPoint);
+            transform.DOLookAt(targetPoint,turnDuration);
             var delta = (targetPoint - transform.position);
             if (delta.magnitude > movingGap)
             {

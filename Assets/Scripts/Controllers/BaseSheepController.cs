@@ -5,9 +5,9 @@ namespace Controllers
     public abstract class BaseSheepController : MonoBehaviour
     {
         public float speed = 0.2f;
-        protected SheepModel _model;
+        protected BotSheepModel _model;
         
-        public void Init(SheepModel model)
+        public void Init(BotSheepModel model)
         {
             _model = model;
         }
@@ -31,6 +31,21 @@ namespace Controllers
             }
             var pushDir = new Vector3 (hit.moveDirection.x, 0, hit.moveDirection.z);
             character.SimpleMove(pushDir * speed);
+        }
+        
+        protected virtual void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.tag == "death") {
+                Death();
+            }
+        }
+
+        protected void Death() {
+            if (_model != null) {
+                _model.State.SetState(SheepState.Death);
+                _model.Release();
+            }
+            Destroy(gameObject);
         }
     }
 }

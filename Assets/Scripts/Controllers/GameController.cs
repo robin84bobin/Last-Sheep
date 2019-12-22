@@ -66,7 +66,7 @@ namespace Controllers
         {
             _gameModel.Update();
             foreach (var sheep in _sheeps){
-                sheep.Update();
+                sheep?.Update();
             }
         }
     }

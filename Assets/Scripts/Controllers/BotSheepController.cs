@@ -24,12 +24,14 @@ public class BotSheepController : BaseSheepController
         characterController.SimpleMove(moveVector);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
+    protected override void OnTriggerEnter(Collider other) {
+        base.OnTriggerEnter(other);
+        
         if (other.gameObject.tag == "field bounds")
         {
             Vector3 newAngles = new Vector3(0f,transform.localRotation.eulerAngles.y - 180, 0f );
             transform.DOLocalRotate(newAngles, 0.2f);
         }
     }
+
 }

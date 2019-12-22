@@ -78,7 +78,7 @@
     <Compile Include="Assets\Scripts\Models\Game\States\UpState.cs" />
     <Compile Include="Assets\Scripts\Models\PlatformModel.cs" />
     <Compile Include="Assets\Scripts\Models\Sheep\BaseModel.cs" />
-    <Compile Include="Assets\Scripts\Models\Sheep\SheepModel.cs" />
+    <Compile Include="Assets\Scripts\Models\Sheep\BotSheepModel.cs" />
     <None Include="Assets\$self_illuminated_outlined_diffuse_113.shader" />
     <None Include="Assets\Demigiant\DOTween\readme.txt" />
     <Reference Include="Unity.Timeline.Editor">

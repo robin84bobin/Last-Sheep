@@ -17,7 +17,7 @@ public class GameModel : BaseModel
     private readonly GameConfig _config;
     
     public PlatformModel platform { get; }
-    public List<SheepModel> sheeps { get; private set; }
+    public List<BotSheepModel> sheeps { get; private set; }
     
     public GameModel(GameConfig config)
     {
@@ -43,10 +43,10 @@ public class GameModel : BaseModel
 
     private void CreateSheeps()
     {
-        sheeps = new List<SheepModel>(_config.defaultSheepsCount);
+        sheeps = new List<BotSheepModel>(_config.defaultSheepsCount);
         for (int i = 0; i < _config.defaultSheepsCount; i++)
         {
-            sheeps.Add(new SheepModel());
+            sheeps.Add(new BotSheepModel());
         }
     }
 
