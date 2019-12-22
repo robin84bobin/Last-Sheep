@@ -26,13 +26,13 @@ namespace Controllers
 
         private void Appear()
         {
-            var bounds = _field.GetComponent<Renderer>().bounds;
-            
             Vector3 point = Vector3.zero;
             //todo calc appear point using bounds
             //...
             transform.position = point;
             _animation.Play("Appear");
+
+            GetComponent<Renderer>().material.shader = Shader.Find("Mobile/Outline");
         }
         
         
@@ -43,6 +43,7 @@ namespace Controllers
 
         private void MoveUp()
         {
+            GetComponent<Renderer>().material.shader = Shader.Find("Standart");
             _animation.Play("Up");
         }
     }

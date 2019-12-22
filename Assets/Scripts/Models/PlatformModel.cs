@@ -30,7 +30,7 @@ namespace Controllers
 
         public void Update()
         {
-            if (Time.time >= _timeToHighlight)
+            if (_timeToHighlight > 0 && Time.time >= _timeToHighlight)
             {
                 OnAppear?.Invoke();
                 _timeToHighlight = Time.time + _highlightPeriod;
