@@ -27,8 +27,21 @@ namespace Controllers
         private void Appear()
         {
             Vector3 point = Vector3.zero;
+            
             //todo calc appear point using bounds
+            var boundsField = _field.GetComponent<Renderer>().bounds;
+            var boundsPlatform = GetComponent<Renderer>().bounds;
+
+            float maxX = boundsField.max.x - boundsPlatform.size.x * .5f;
+            float minX = boundsField.min.x + boundsPlatform.size.x * .5f;
+            var x = Random.Range(minX, maxX);
+            
+            float maxZ = boundsField.max.z - boundsPlatform.size.z * .5f;
+            float minZ = boundsField.min.z + boundsPlatform.size.z * .5f;
+            var z = Random.Range(minZ, maxZ);
+            point = new Vector3(x,0f,z);
             //...
+            
             transform.position = point;
             _animation.Play("Appear");
 
