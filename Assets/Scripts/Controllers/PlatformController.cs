@@ -28,6 +28,14 @@ namespace Controllers
         {
             Vector3 point = Vector3.zero;
             
+            var defaultScale = transform.localScale;
+
+            transform.localScale *= _platformModel.DecreaseFactor;
+            if (transform.localScale.x * transform.localScale.z < 1) {
+                transform.localScale = defaultScale;
+            }
+            
+            
             //todo calc appear point using bounds
             var boundsField = _field.GetComponent<Renderer>().bounds;
             var boundsPlatform = GetComponent<Renderer>().bounds;

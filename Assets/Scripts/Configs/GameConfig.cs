@@ -27,6 +27,5 @@ public class SheepConfig
 public class PlatformConfig
 {
     public float highlightDuration = 5f;
-    public int defaultMaxSheepCapacity = 12;
-    public int decreaseCapacityFactor = 1;
+    public float decreaseCapacityFactor = 0.8f;
 }

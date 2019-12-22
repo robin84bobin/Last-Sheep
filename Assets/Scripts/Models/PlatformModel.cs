@@ -12,10 +12,12 @@ namespace Controllers
         private readonly GameConfig _config;
         private readonly float _highlightPeriod;
         private float _timeToHighlight;
+        public float DecreaseFactor { get; }
 
         public PlatformModel(GameConfig config)
         {
             _highlightPeriod = config.GetPlatformHighLightPeriod();
+            DecreaseFactor = config.Platform.decreaseCapacityFactor;
         }
 
         public void Down()
