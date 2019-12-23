@@ -18,11 +18,18 @@ namespace Controllers
         {
             _highlightPeriod = config.GetPlatformHighLightPeriod();
             DecreaseFactor = config.Platform.decreaseCapacityFactor;
+            SetHiglightTime();
         }
 
         public void Down()
         {
             OnDown?.Invoke();
+            SetHiglightTime();
+        }
+
+        private void SetHiglightTime()
+        {
+            _timeToHighlight = Time.time + _highlightPeriod;
         }
 
         public void Up()
@@ -35,7 +42,7 @@ namespace Controllers
             if (_timeToHighlight > 0 && Time.time >= _timeToHighlight)
             {
                 OnAppear?.Invoke();
-                _timeToHighlight = Time.time + _highlightPeriod;
+                _timeToHighlight = 0;
             }
         }
 

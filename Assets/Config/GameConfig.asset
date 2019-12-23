@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   downStateDuration: 15
   upStateDuration: 5
-  defaultSheepsCount: 8
+  defaultSheepsCount: 12
   Platform:
     highlightDuration: 5
-    defaultMaxSheepCapacity: 12
     decreaseCapacityFactor: 1
   sheep:
     speed: 1

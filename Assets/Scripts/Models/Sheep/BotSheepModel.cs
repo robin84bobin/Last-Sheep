@@ -1,35 +1,54 @@
+using System;
 using Model;
 using Model.FSM;
 
 namespace Controllers
 {
-    public class BotSheepModel : BaseModel
+    public class BotSheepModel : BaseSheepModel
     {
-        public bool EnableMoving = true;
-
-        private FSM<SheepState, BaseState<SheepState>> _fsm;
-        public IStateMachine<SheepState> State => _fsm;
-        
-        public BotSheepModel()
+        public BotSheepModel():base()
         {
-            _fsm = new FSM<SheepState, BaseState<SheepState>>();
             _fsm.Add(new SheepWalkState());
             _fsm.Add(new SheepGoToTagretState());
+        }
+    }
+
+    public class BaseSheepModel : BaseModel
+    {
+        public event Action<BaseSheepModel> OnDeath;
+        public event Action<BaseSheepModel> OnUpdate;
+        
+        protected FSM<SheepState, BaseState<SheepState>> _fsm;
+        public IStateMachine<SheepState> State => _fsm;
+
+        public BaseSheepModel()
+        {
+            _fsm = new FSM<SheepState, BaseState<SheepState>>();
             _fsm.Add(new SheepDeathState());
+            _fsm.OnStateChanged += OnStateChanged;
+        }
+        
+        private void OnStateChanged(SheepState state)
+        {
+            if (state ==  SheepState.Death){
+                OnDeath?.Invoke(this);
+            }
+        }
+        
+        public void Update()
+        {
+            OnUpdate?.Invoke(this);
         }
         
         public override void Release()
         {
             _fsm.Release();
-        }
-
-        public void Update()
-        {
-            //
+            OnDeath = null;
+            OnUpdate = null;
         }
     }
 
-   public enum SheepState
+    public enum SheepState
     {
         Walk,
         GoToTagret,
@@ -46,17 +65,14 @@ namespace Controllers
     }
 
     public class SheepGoToTagretState : BaseState<SheepState>{
-        public SheepGoToTagretState() : base(SheepState.GoToTagret)
-        {
+        public SheepGoToTagretState() : base(SheepState.GoToTagret){
         }
 
-        public override void OnEnterState()
-        {
+        public override void OnEnterState(){
             
         }
 
-        public override void OnExitState()
-        {
+        public override void OnExitState(){
             
         }
     }

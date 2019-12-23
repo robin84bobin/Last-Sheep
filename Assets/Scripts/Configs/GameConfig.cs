@@ -13,7 +13,7 @@ public class GameConfig : ScriptableObject
 
     public float GetPlatformHighLightPeriod()
     {
-        return upStateDuration + downStateDuration - Platform.highlightDuration;
+        return downStateDuration - Platform.highlightDuration;
     }
 }
 

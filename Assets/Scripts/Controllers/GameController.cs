@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
 
 namespace Controllers
 {
@@ -17,11 +19,17 @@ namespace Controllers
         private void Start()
         {
             _gameModel = new GameModel(_config);
+            _gameModel.GameOver += GameOver;
             
             _platformController.Init(_gameModel.platform, _field);
             _gameModel.Update();
 
             CreateSheeps();
+        }
+
+        private void GameOver()
+        {
+            SceneManager.LoadScene("GameOver");
         }
 
         private Queue<Vector3> _spawnPoints;
@@ -36,16 +44,16 @@ namespace Controllers
             
             var prefabHero = Resources.Load<GameObject>("Prefabs/Sven");
             var hero = Instantiate(prefabHero);
-            hero.GetComponent<PlayerSheepController>().plane = _plane;
+            var playerSheepController = hero.GetComponent<PlayerSheepController>();
+            playerSheepController.Init(_gameModel.playerSheepModel);
+            playerSheepController.plane = _plane;
             SpawnSheep(hero);
             
-            _sheeps = new List<BaseSheepController>(_gameModel.sheeps.Count);
-            foreach (var sheepModel in _gameModel.sheeps){
+            foreach (var sheepModel in _gameModel.botSheeps){
                 var prefabSheep = Resources.Load<GameObject>("Prefabs/SheepBot");
                 var sheep = Instantiate(prefabSheep);
                 var sheepController = sheep.GetComponent<BotSheepController>();
                     sheepController.Init(sheepModel);
-                _sheeps.Add(sheepController);
                 SpawnSheep(sheep);
             }
         }
@@ -58,16 +66,14 @@ namespace Controllers
             }
             sheep.transform.position = _spawnPoints.Dequeue();
             sheep.transform.localScale = Vector3.one;
-            sheep.transform.rotation = Quaternion.Euler(0f, UnityEngine.Random.Range(0,360), 0f);
+            sheep.transform.rotation = Quaternion.Euler(0f, Random.Range(0,360), 0f);
             sheep.SetActive(true);
         }
 
         private void Update()
         {
             _gameModel.Update();
-            foreach (var sheep in _sheeps){
-                sheep?.Update();
-            }
         }
     }
+
 }

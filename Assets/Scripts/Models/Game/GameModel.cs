@@ -11,13 +11,16 @@ public enum GameState
 
 public class GameModel : BaseModel
 {
+    public event Action GameOver;
+    
     private FSM<GameState, BaseGameState> fsm;
     public IStateMachine<GameState> Fsm => fsm;
     
     private readonly GameConfig _config;
-    
+    public BaseSheepModel playerSheepModel;
+
     public PlatformModel platform { get; }
-    public List<BotSheepModel> sheeps { get; private set; }
+    public List<BaseSheepModel> botSheeps { get; private set; }
     
     public GameModel(GameConfig config)
     {
@@ -43,16 +46,31 @@ public class GameModel : BaseModel
 
     private void CreateSheeps()
     {
-        sheeps = new List<BotSheepModel>(_config.defaultSheepsCount);
+        playerSheepModel = new BaseSheepModel();
+        playerSheepModel.OnDeath += OnPlayerDeath;
+        
+        botSheeps = new List<BaseSheepModel>(_config.defaultSheepsCount);
         for (int i = 0; i < _config.defaultSheepsCount; i++)
         {
-            sheeps.Add(new BotSheepModel());
+            var botSheepModel = new BotSheepModel();
+            botSheepModel.OnDeath += OnBotDeath;
+            botSheeps.Add(botSheepModel);
         }
+    }
+
+    private void OnPlayerDeath(BaseSheepModel player)
+    {
+        GameOver?.Invoke();
+    }
+
+    private void OnBotDeath(BaseSheepModel botSheepModel)
+    {
+        botSheeps.Remove(botSheepModel);
     }
 
     private void SetSheepsState(SheepState state)
     {
-        foreach (var sheep in sheeps)
+        foreach (var sheep in botSheeps)
         {
             sheep.State.SetState(state);
         }
@@ -79,7 +97,8 @@ public class GameModel : BaseModel
         platform.Update();
         fsm.CurrentState.Update();
         
-        foreach (var sheep in sheeps)
+        playerSheepModel.Update();
+        foreach (var sheep in botSheeps)
         {
             sheep.Update();
         }
@@ -87,6 +106,11 @@ public class GameModel : BaseModel
 
     public override void Release()
     {
+        playerSheepModel.Release();
+        foreach (var sheep in botSheeps)
+        {
+            sheep.Release();
+        }
         platform.Release();
         fsm.Release();
     }

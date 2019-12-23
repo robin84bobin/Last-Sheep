@@ -35,7 +35,6 @@ namespace Controllers
                 transform.localScale = defaultScale;
             }
             
-            
             //todo calc appear point using bounds
             var boundsField = _field.GetComponent<Renderer>().bounds;
             var boundsPlatform = GetComponent<Renderer>().bounds;
@@ -52,8 +51,6 @@ namespace Controllers
             
             transform.position = point;
             _animation.Play("Appear");
-
-            //GetComponent<Renderer>().material.shader = Shader.Find("Mobile/Outline");
         }
         
         
@@ -64,7 +61,6 @@ namespace Controllers
 
         private void MoveUp()
         {
-            //GetComponent<Renderer>().material.shader = Shader.Find("Standart");
             _animation.Play("Up");
         }
     }
