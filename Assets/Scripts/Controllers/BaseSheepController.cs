@@ -1,12 +1,20 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Controllers
 {
+    [RequireComponent(typeof(Animation))]
     public abstract class BaseSheepController : MonoBehaviour
     {
-        public float speed = 0.2f;
-        public float runSpeed = 1f;
+        protected Animation _animation;
         protected BaseSheepModel _model;
+        public float runSpeed = 1f;
+        public float speed = 0.2f;
+
+        protected virtual void Awake()
+        {
+            _animation = GetComponent<Animation>();
+        }
 
         public void Init(BaseSheepModel model)
         {
@@ -21,18 +29,23 @@ namespace Controllers
 
         private void OnTryKill(BaseSheepModel model)
         {
-            if (transform.position.y < 2)
-            {
-                Death();
-            }
+            if (transform.position.y < 2) Death();
         }
 
         private void OnDeath(BaseSheepModel model)
         {
+            var clipName = "Death";
+            var clip = _animation.GetClip(clipName);
+            _animation.Play(clipName);
+            StartCoroutine(OnDeathAnimComplete(clip.length));
+        }
+
+        public IEnumerator OnDeathAnimComplete(float clipLength)
+        {
+            yield return new WaitForSeconds(clipLength);
             Destroy(gameObject);
         }
 
-        //TODO remove model param
         private void OnUpdate(BaseSheepModel model)
         {
             MoveOnUpdate();
@@ -40,13 +53,10 @@ namespace Controllers
 
         protected abstract void MoveOnUpdate();
 
-        void OnControllerColliderHit(ControllerColliderHit hit)
+        private void OnControllerColliderHit(ControllerColliderHit hit)
         {
             var character = hit.gameObject.GetComponent<CharacterController>();
-            if (character == null)
-            {
-                return;
-            }
+            if (character == null) return;
 
             var pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
             character.SimpleMove(pushDir * speed);
@@ -54,10 +64,7 @@ namespace Controllers
 
         protected virtual void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.tag == "death")
-            {
-                Death();
-            }
+            if (other.gameObject.tag == "death") Death();
         }
 
         private void Death()

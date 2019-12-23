@@ -73,11 +73,12 @@
     <Compile Include="Assets\Scripts\FSM\FSM.cs" />
     <Compile Include="Assets\Scripts\Models\BaseModel.cs" />
     <Compile Include="Assets\Scripts\Models\Game\GameModel.cs" />
-    <Compile Include="Assets\Scripts\Models\Game\States\BaseGameState.cs" />
-    <Compile Include="Assets\Scripts\Models\Game\States\DownState.cs" />
-    <Compile Include="Assets\Scripts\Models\Game\States\UpState.cs" />
-    <Compile Include="Assets\Scripts\Models\PlatformModel.cs" />
+    <Compile Include="Assets\Scripts\Models\Platform\BasePlatformState.cs" />
+    <Compile Include="Assets\Scripts\Models\Platform\PlatformModel.cs" />
+    <Compile Include="Assets\Scripts\Models\Platform\PlatformState.cs" />
+    <Compile Include="Assets\Scripts\Models\Sheep\BaseSheepModel.cs" />
     <Compile Include="Assets\Scripts\Models\Sheep\BotSheepModel.cs" />
+    <Compile Include="Assets\Scripts\Models\Sheep\SheepState.cs" />
     <Compile Include="Assets\Scripts\StartMenu.cs" />
     <None Include="Assets\$self_illuminated_outlined_diffuse_113.shader" />
     <None Include="Assets\Demigiant\DOTween\readme.txt" />

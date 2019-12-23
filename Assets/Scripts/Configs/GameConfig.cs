@@ -4,18 +4,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameConfig", menuName = "GameConfig")]
 public class GameConfig : ScriptableObject
 {
-    public float downStateDuration = 30f;
-    public float upStateDuration = 5f;
-    public float killStateDuration = 5f;
-    
     public int defaultSheepsCount = 12;
+    public float killStateDuration = 5f;
     public PlatformConfig Platform;
     public SheepConfig sheep;
-
-    public float GetPlatformHighLightPeriod()
-    {
-        return downStateDuration - Platform.highlightDuration;
-    }
 }
 
 [Serializable]
@@ -27,6 +19,8 @@ public class SheepConfig
 [Serializable]
 public class PlatformConfig
 {
+    public float decreaseFactor = 0.8f;
+    public float downStateDuration = 20f;
     public float highlightDuration = 5f;
-    public float decreaseCapacityFactor = 0.8f;
+    public float upStateDuration = 5f;
 }
