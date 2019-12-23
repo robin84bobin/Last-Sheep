@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 namespace Controllers
 {
@@ -20,11 +22,17 @@ namespace Controllers
         {
             _gameModel = new GameModel(_config);
             _gameModel.GameOver += GameOver;
-            
+           
             _platformController.Init(_gameModel.platform, _field);
+            _platformController.OnAppear += OnPlatformAppear;
             _gameModel.Update();
-
+            
             CreateSheeps();
+        }
+
+        private void OnPlatformAppear()
+        {
+            _gameModel.SetSheepsTarget(_platformController.transform.position);
         }
 
         private void GameOver()
@@ -75,5 +83,4 @@ namespace Controllers
             _gameModel.Update();
         }
     }
-
 }

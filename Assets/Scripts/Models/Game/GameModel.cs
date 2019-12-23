@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Controllers;
 using Model;
+using UnityEngine;
 
 public enum GameState
 {
@@ -14,7 +15,7 @@ public class GameModel : BaseModel
     public event Action GameOver;
     
     private FSM<GameState, BaseGameState> fsm;
-    public IStateMachine<GameState> Fsm => fsm;
+    public IStateMachine<GameState> State => fsm;
     
     private readonly GameConfig _config;
     public BaseSheepModel playerSheepModel;
@@ -82,6 +83,8 @@ public class GameModel : BaseModel
         {
             case GameState.Up:
                 platform.Up();
+                SetSheepsState(SheepState.GoToTagret);
+                
                 break;
             case GameState.Down:
                 platform.Down();
@@ -113,5 +116,13 @@ public class GameModel : BaseModel
         }
         platform.Release();
         fsm.Release();
+    }
+
+    public void SetSheepsTarget(Vector3 position)
+    {
+        foreach (var sheep in botSheeps)
+        {
+            sheep.TargetPosition = position;
+        }
     }
 }

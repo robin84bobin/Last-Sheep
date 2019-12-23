@@ -81,8 +81,17 @@
     <Compile Include="Assets\Scripts\StartMenu.cs" />
     <None Include="Assets\$self_illuminated_outlined_diffuse_113.shader" />
     <None Include="Assets\Demigiant\DOTween\readme.txt" />
+    <Reference Include="Unity.Timeline.Editor">
+      <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PackageManagerUI.Editor">
+      <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
@@ -92,15 +101,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
       <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>D:/WORK/TEST/LastSheep/Last Sheep/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.6f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

@@ -1,10 +1,15 @@
+using System;
+using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Controllers
 {
     [RequireComponent(typeof(Animation))]
     public class PlatformController : MonoBehaviour
     {
+        public event Action OnAppear;
+        
         private Animation _animation;
         private PlatformModel _platformModel;
         private GameObject _field;
@@ -30,7 +35,9 @@ namespace Controllers
             
             var defaultScale = transform.localScale;
 
-            transform.localScale *= _platformModel.DecreaseFactor;
+            var scaleX = transform.localScale.x * _platformModel.DecreaseFactor;
+            var scaleZ = transform.localScale.z * _platformModel.DecreaseFactor;
+            transform.localScale = new Vector3(scaleX, transform.localScale.y, scaleZ);
             if (transform.localScale.x * transform.localScale.z < 1) {
                 transform.localScale = defaultScale;
             }
@@ -46,22 +53,26 @@ namespace Controllers
             float maxZ = boundsField.max.z - boundsPlatform.size.z * .5f;
             float minZ = boundsField.min.z + boundsPlatform.size.z * .5f;
             var z = Random.Range(minZ, maxZ);
-            point = new Vector3(x,0f,z);
+            point = new Vector3(x,0.001f,z);
             //...
             
             transform.position = point;
             _animation.Play("Appear");
+            
+            OnAppear?.Invoke();
         }
-        
         
         private void MoveDown()
         {
-            _animation.Play("Down");
+            Vector3 downPosition = new Vector3(transform.position.x, -0.1f, transform.position.z);
+            transform.DOMove(downPosition, 0.3f);
         }
 
         private void MoveUp()
         {
-            _animation.Play("Up");
+            Vector3 upPosition = new Vector3(transform.position.x, 1f, transform.position.z);
+            transform.DOMove(upPosition, 1f);
         }
+
     }
 }

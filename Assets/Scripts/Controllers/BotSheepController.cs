@@ -15,12 +15,33 @@ public class BotSheepController : BaseSheepController
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
+        _model.State.OnStateChanged += OnStateChanged;
+    }
+
+    private void OnStateChanged(SheepState state)
+    {
+        if (state.Equals(SheepState.Walk))
+        {
+            var rotation = Quaternion.Euler(0f, Random.Range(0,360), 0f);
+            transform.DORotate(rotation.eulerAngles, turnDuration);
+            //transform.rotation = rotation;
+        }
     }
 
     protected override void MoveOnUpdate()
     {
-        moveVector = transform.forward * speed;
-        //TODO some logic...
+        if (_model.State.CurrentStateName.Equals(SheepState.Walk))
+        {
+            moveVector = transform.forward * speed;
+        }
+        else   
+        if (_model.State.CurrentStateName.Equals(SheepState.GoToTagret))
+        {
+            Vector3 targetPoint = new Vector3(_model.TargetPosition.x, transform.position.y, _model.TargetPosition.z);
+            transform.DOLookAt(targetPoint,turnDuration);
+            moveVector = transform.forward * runSpeed;
+        }
+        
         characterController.SimpleMove(moveVector);
     }
 

@@ -5,6 +5,7 @@ namespace Controllers
     public abstract class BaseSheepController : MonoBehaviour
     {
         public float speed = 0.2f;
+        public float runSpeed = 1f;
         protected BaseSheepModel _model;
         
         public void Init(BaseSheepModel model)

@@ -1,6 +1,7 @@
 using System;
 using Model;
 using Model.FSM;
+using UnityEngine;
 
 namespace Controllers
 {
@@ -20,6 +21,7 @@ namespace Controllers
         
         protected FSM<SheepState, BaseState<SheepState>> _fsm;
         public IStateMachine<SheepState> State => _fsm;
+        public Vector3 TargetPosition { get; set; }
 
         public BaseSheepModel()
         {

@@ -9,12 +9,14 @@ namespace Model
     {
         event Action<TStateName> OnStateChanged;
         void SetState(TStateName key, bool restartCurrentState = false);
+        TStateName CurrentStateName { get; }
     }
 
     public class FSM<TStateName, TState> : IStateMachine<TStateName> where TState : BaseState<TStateName>
     {
         public event Action<TStateName> OnStateChanged;
         public TState CurrentState { get; private set; }
+        public TStateName CurrentStateName => CurrentState.Name;
         private Dictionary<TStateName, TState> _states = new Dictionary<TStateName, TState>();
 
         public void Add(TState state)
