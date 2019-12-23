@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
@@ -57,11 +55,14 @@ namespace Controllers
             playerSheepController.plane = _plane;
             SpawnSheep(hero);
             
-            foreach (var sheepModel in _gameModel.botSheeps){
+            _sheeps = new List<BaseSheepController>(_gameModel.botSheeps.Count);
+            foreach (var sheepModel in _gameModel.botSheeps)
+            {
                 var prefabSheep = Resources.Load<GameObject>("Prefabs/SheepBot");
                 var sheep = Instantiate(prefabSheep);
                 var sheepController = sheep.GetComponent<BotSheepController>();
                     sheepController.Init(sheepModel);
+                _sheeps.Add(sheepController);
                 SpawnSheep(sheep);
             }
         }

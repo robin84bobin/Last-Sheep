@@ -16,6 +16,7 @@ namespace Controllers
 
     public class BaseSheepModel : BaseModel
     {
+        public event Action<BaseSheepModel> TryKill;
         public event Action<BaseSheepModel> OnDeath;
         public event Action<BaseSheepModel> OnUpdate;
         
@@ -47,6 +48,11 @@ namespace Controllers
             _fsm.Release();
             OnDeath = null;
             OnUpdate = null;
+        }
+
+        public void TryToKill()
+        {
+            TryKill?.Invoke(this);
         }
     }
 

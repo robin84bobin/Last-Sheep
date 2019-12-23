@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  runSpeed: 2
   turnDuration: 0.2
   plane: {fileID: 0}
   movingGap: 2

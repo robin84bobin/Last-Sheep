@@ -6,6 +6,7 @@ public class GameConfig : ScriptableObject
 {
     public float downStateDuration = 30f;
     public float upStateDuration = 5f;
+    public float killStateDuration = 5f;
     
     public int defaultSheepsCount = 12;
     public PlatformConfig Platform;

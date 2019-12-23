@@ -7,7 +7,8 @@ using UnityEngine;
 public enum GameState
 {
     Up,
-    Down
+    Down,
+    Kill
 }
 
 public class GameModel : BaseModel
@@ -28,8 +29,9 @@ public class GameModel : BaseModel
         _config = config;
         
         fsm = new FSM<GameState, BaseGameState>();
-        fsm.Add(new UpState(GameState.Up, _config.upStateDuration));
-        fsm.Add(new DownState(GameState.Down, _config.downStateDuration));
+        fsm.Add(new UpState(_config.upStateDuration));
+        fsm.Add(new DownState(_config.downStateDuration));
+        fsm.Add(new KillState(_config.killStateDuration));
         fsm.OnStateChanged += OnStateChanged;
         
         platform = new PlatformModel(_config);
@@ -81,6 +83,9 @@ public class GameModel : BaseModel
     {
         switch (state)
         {
+            case GameState.Kill:
+                Kill();
+                break;
             case GameState.Up:
                 platform.Up();
                 SetSheepsState(SheepState.GoToTagret);
@@ -92,6 +97,15 @@ public class GameModel : BaseModel
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
+        }
+    }
+
+    private void Kill()
+    {
+        playerSheepModel.TryToKill();
+        foreach (var sheep in botSheeps)
+        {
+            sheep.TryToKill();
         }
     }
 

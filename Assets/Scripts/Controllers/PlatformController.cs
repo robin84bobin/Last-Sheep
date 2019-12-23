@@ -53,7 +53,7 @@ namespace Controllers
             float maxZ = boundsField.max.z - boundsPlatform.size.z * .5f;
             float minZ = boundsField.min.z + boundsPlatform.size.z * .5f;
             var z = Random.Range(minZ, maxZ);
-            point = new Vector3(x,0.001f,z);
+            point = new Vector3(x,0.0001f,z);
             //...
             
             transform.position = point;

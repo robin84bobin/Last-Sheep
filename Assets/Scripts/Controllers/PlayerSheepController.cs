@@ -17,6 +17,11 @@ public class PlayerSheepController : BaseSheepController
         camera = Camera.main;
     }
 
+    protected override void OnStateChanged(SheepState state)
+    {
+        //
+    }
+
     protected override void MoveOnUpdate()
     {
         var moveVector = Vector3.zero;

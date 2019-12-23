@@ -6,7 +6,7 @@ public class UpState : BaseGameState
     private float _timeEnd;
     private float _duration;
 
-    public UpState(GameState name, float duration) : base(name)
+    public UpState(float duration) : base(GameState.Up)
     {
         _duration = duration;
     }
@@ -25,7 +25,7 @@ public class UpState : BaseGameState
     {
         if (Time.time > _timeEnd)
         {
-            _owner.SetState(GameState.Down);
+            _owner.SetState(GameState.Kill);
         }
     }
 }
