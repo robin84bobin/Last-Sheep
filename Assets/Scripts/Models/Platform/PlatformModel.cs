@@ -3,7 +3,7 @@ using Model;
 
 namespace Controllers
 {
-    public class PlatformModel : BaseModel
+    public class PlatformModel 
     {
         private readonly PlatformConfig _config;
         private float _timeToHighlight;
@@ -56,7 +56,7 @@ namespace Controllers
             }
         }
 
-        public override void Release()
+        public void Release()
         {
             OnUp = null;
             OnDown = null;

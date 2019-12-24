@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Controllers
 {
-    public class BaseSheepModel : BaseModel
+    public class BaseSheepModel 
     {
         protected FSM<SheepState, BaseState<SheepState>> _fsm;
 
@@ -43,7 +43,7 @@ namespace Controllers
             OnUpdate?.Invoke(this);
         }
 
-        public override void Release()
+        public void Release()
         {
             _fsm.Release();
             OnDeath = null;

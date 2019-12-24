@@ -4,7 +4,7 @@ using System.Linq;
 using Controllers;
 using UnityEngine;
 
-public class GameModel : BaseModel
+public class GameModel 
 {
     private readonly GameConfig _config;
 
@@ -98,7 +98,7 @@ public class GameModel : BaseModel
         foreach (var sheep in botSheeps) sheep.TargetPosition = position;
     }
 
-    public override void Release()
+    public void Release()
     {
         playerSheepModel.Release();
         foreach (var sheep in botSheeps) sheep.Release();

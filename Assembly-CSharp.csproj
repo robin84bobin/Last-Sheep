@@ -71,7 +71,6 @@
     <Compile Include="Assets\Scripts\Controllers\PlayerSheepController.cs" />
     <Compile Include="Assets\Scripts\FSM\BaseState.cs" />
     <Compile Include="Assets\Scripts\FSM\FSM.cs" />
-    <Compile Include="Assets\Scripts\Models\BaseModel.cs" />
     <Compile Include="Assets\Scripts\Models\Game\GameModel.cs" />
     <Compile Include="Assets\Scripts\Models\Platform\BasePlatformState.cs" />
     <Compile Include="Assets\Scripts\Models\Platform\PlatformModel.cs" />
